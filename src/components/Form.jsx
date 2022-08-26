@@ -3,76 +3,88 @@ import PropTypes from 'prop-types';
 
 class Form extends React.Component {
   render() {
-    const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled,
-      onInputChange, onSaveButtonClick } = this.props;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      // , hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick,
+    } = this.props;
     return (
       <form>
-        <label htmlFor>
+        <label htmlFor="cardName">
           Nome da carta:
           <input
+            id="cardName"
             data-testid="name-input"
             type="text"
-            name="name"
+            name="cardName"
             value={ cardName }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor>
+        <label htmlFor="cardDescription">
           Descrição da carta:
           <input
             data-testid="description-input"
             type="textarea"
-            name="descripition"
+            name="cardDescription"
             value={ cardDescription }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor>
+        <label htmlFor="cardAttr1">
           Primeiro Atributo:
           <input
             data-testid="attr1-input"
             type="number"
-            name="att1"
+            name="cardAttr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor>
+        <label htmlFor="cardAttr2">
           Segundo Atributo:
           <input
             data-testid="attr2-input"
             type="number"
-            name="att2"
+            name="cardAttr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor>
+        <label htmlFor="cardAttr3">
           Terceiro Atributo:
           <input
             data-testid="attr3-input"
             type="number"
-            name="att3"
+            name="cardAttr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor>
+        <label htmlFor="cardImage">
           Imagem:
           <input
             data-testid="image-input"
-            name="img"
+            name="cardImage"
             value={ cardImage }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor>
-          Nome da carta:
+        <label htmlFor="cardRare">
+          Raridade:
           <select
             data-testid="rare-input"
             type="select"
-            name="rarity"
+            name="cardRare"
             value={ cardRare }
             onChange={ onInputChange }
           >
@@ -81,12 +93,12 @@ class Form extends React.Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
-        <label htmlFor>
+        <label htmlFor="cardTrunfo">
           Super Trunfo:
           <input
             data-testid="trunfo-input"
             type="checkbox"
-            name="superTrunfo"
+            name="cardTrunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />
@@ -116,9 +128,9 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
-  // isSaveButtonDisabled:
-  // onInputChange:
-  // onSaveButtonClick:
-};
+  // hasTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool,
+  onInputChange: PropTypes.func,
+  onSaveButtonClick: PropTypes.func,
+}.isRequired;
 export default Form;

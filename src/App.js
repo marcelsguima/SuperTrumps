@@ -15,6 +15,7 @@ class App extends React.Component {
     cardTrunfo: false,
     isSaveButtonDisabled: true,
     deck: [],
+    hasTrunfo: false,
   };
 
   onInputChange = ({ target }) => {
@@ -26,9 +27,10 @@ class App extends React.Component {
   };
 
   onSaveButtonClick = () => {
-    // const { cardTrunfo } = this.state;
-    const { isSaveButtonDisabled, deck, ...valor } = this.state;
-
+    const { isSaveButtonDisabled, deck, hasTrunfo, ...valor } = this.state;
+    if (valor.cardTrunfo === true && hasTrunfo === false) {
+      this.setState({ hasTrunfo: true });
+    }
     this.setState({
       deck: [valor, ...deck],
     }, () => {
@@ -67,7 +69,7 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled, hasTrunfo } = this.state;
     return (
       <div>
         <Form
@@ -80,7 +82,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          // , hasTrunfo,
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
         />

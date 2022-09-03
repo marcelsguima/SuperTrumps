@@ -69,7 +69,7 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo,
-      isSaveButtonDisabled, hasTrunfo } = this.state;
+      isSaveButtonDisabled, hasTrunfo, deck } = this.state;
     return (
       <div>
         <Form
@@ -95,8 +95,10 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-
         />
+        <ul>
+          {deck.map((cap, i) => <li key={ i }><Card { ...cap } /></li>)}
+        </ul>
       </div>
     );
   }
